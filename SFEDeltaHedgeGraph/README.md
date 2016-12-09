@@ -14,8 +14,8 @@ calulates corresponding heding costs for given parameters'
 
 Keywords : delta, hedging, asset, black-scholes, call, simulation, cost, delta, strategy
 
-See also : 'SFESLDHPerf, SFESLDHConv, SFEStopLossLogic, SFEDeltaHedgeGraph, SFSstoploss, SFEDeltaHedging,
-SFEDeltahedgingLogic, SFEDeltahedgingdepend'
+See also : 'SFESLDHPerf, SFESLDHConv, SFEStopLossLogic, SFEDeltaHedgeGraph, SFEStopLossThGraph,
+SFSstoploss, SFEDeltaHedging, SFEDeltahedgingLogic, SFEDeltahedgingdepend'
 
 Author : Simon Gstöhl, Florian Schulz
 
@@ -29,7 +29,7 @@ Input:
 - t0: Starting time (1 week = 1/52)
 - mat: Maturity.
 
-Output : A plot of the logic of delta hedging and assosiated costs with given parameters
+Output : A plot of the logic of delta hedging and assosiated costs with given parameters.
 
 ```
 
