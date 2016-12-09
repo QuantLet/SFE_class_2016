@@ -14,7 +14,7 @@ and selling time points of a stop-loss hedging strategy'
 
 Keywords : stop-loss, hedging, asset, black-scholes, call, simulation, cost, delta, strategy
 
-See also : SFESLDHPerf, SFESLDHConv, SFEDeltaHedgeGraph, SFSstoploss
+See also : SFESLDHPerf, SFESLDHConv, SFEDeltaHedgeGraph, SFEStopLossThGraph, SFSstoploss
 
 Author : Simon Gstöhl, Florian Schulz
 
