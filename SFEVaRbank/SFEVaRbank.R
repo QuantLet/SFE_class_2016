@@ -64,10 +64,10 @@ Portfolio$RugsEMAY = (Portfolio$PercChange > Portfolio$VaREMAY | Portfolio$PercC
 # remove rows without VaR
 Portfolio = Portfolio[- c(1 :h), ]
 
-
 # Plot Result for Lt/AbsChange
-plot(Portfolio$Date, Portfolio$AbsChange, pch = 16, cex = 0.3, #ylim = c(-0.18, 0.18), 
-     ylab = expression({L}[t]), xlab = "Year", main = "VaR Timeplot")
+ymax = 1.05*max(abs(min(Portfolio$AbsChange)), abs(max(Portfolio$AbsChange)))
+plot(Portfolio$Date, Portfolio$AbsChange, pch = 16, cex = 0.3, ylim = c(-ymax, ymax), 
+     ylab = expression({L}[t]), xlab = "Date", main = "VaR and Exceedences (2007 - 2009)")
 lines(Portfolio$Date, Portfolio$VaRRMAL, col = "red", lty = 2, lwd = 2)
 lines(Portfolio$Date, - Portfolio$VaRRMAL, col = "red", lty = 2, lwd = 2)
 lines(Portfolio$Date, Portfolio$VaREMAL, col = "blue", lwd = 2)
@@ -82,8 +82,9 @@ dev.print(device = png, filename = 'VaR_LtAbsChange.png', width = 1200, height =
 dev.off()
 
 # Plot Result for Yt/PercChange
-plot(Portfolio$Date, Portfolio$PercChange, pch = 16, cex = 0.2, #ylim = c(-0.18, 0.18), 
-     ylab = expression({Y}[t]), xlab = "Year", main = "VaR Timeplot")
+ymax = 1.05*max(abs(min(Portfolio$PercChange)), abs(max(Portfolio$PercChange)))
+plot(Portfolio$Date, Portfolio$PercChange, pch = 16, cex = 0.2, ylim = c(-ymax, ymax), 
+     ylab = expression({Y}[t]), xlab = "Date", main = "VaR and Exceedences (2007 - 2009)")
 lines(Portfolio$Date, Portfolio$VaRRMAY, col = "red", lty = 2, lwd = 2)
 lines(Portfolio$Date, - Portfolio$VaRRMAY, col = "red", lty = 2, lwd = 2)
 lines(Portfolio$Date, Portfolio$VaREMAY, col = "blue", lwd = 2)
@@ -102,12 +103,12 @@ dev.print(device = png, filename = 'VaR_YtPercChange.png', width = 1200, height 
 dev.off()
 
 # Plot qqplots
-qqnorm(Portfolio$AbsChange/Portfolio$VaRRMAL, main = "VaR (RMA) Reliability",
+qqnorm(Portfolio$AbsChange/Portfolio$VaRRMAL, main = "VaR (RMA) Reliability (2007 - 2009)",
        xlab = "Theoretical Quantiles", ylab = "P&L over VaR Quantiles", ylim = c(-3,3))
 qqline(Portfolio$AbsChange/Portfolio$VaRRMAL)
 dev.print(device = png, filename = 'VaRReliability_RMA.png', width = 500, height = 500)
 dev.off()
-qqnorm(Portfolio$AbsChange/Portfolio$VaREMAL, main = "VaR (EMA) Reliability",
+qqnorm(Portfolio$AbsChange/Portfolio$VaREMAL, main = "VaR (EMA) Reliability (2007 - 2009)",
        xlab = "Theoretical Quantiles", ylab = "P&L over VaR Quantiles", ylim = c(-3,3))
 qqline(Portfolio$AbsChange/Portfolio$VaREMAL)
 dev.print(device = png, filename = 'VaRReliability_EMA.png', width = 500, height = 500)
