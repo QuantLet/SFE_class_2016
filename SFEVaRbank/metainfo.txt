@@ -1,0 +1,28 @@
+
+Name of Quantlet : SFEVaRbank
+
+Published in : Statistics of Financial Markets I
+
+Description : 'Calculates the RMA and EMA of a portfolio of assets'
+
+Keywords : VaR, Value at Risk, risk, historical, RMA, EMA, delta-normal, qqplot
+
+
+Author : Marta Domagalska, Shawn Gao, Pegah Maham, David Pollack
+
+Submitted : 2016/12/12
+
+Input: 
+- h: Time horizon for RMA and EMA
+- alpha: Confidence-level of RMA and EMA
+- gamma: decay of EMA
+
+Datafile:
+- SFEVaRbank.csv : 'Time-series of the nominal prices of the DAX30, FTSE 100, and an 
+assortment of stocks of other large companies.  Originally this file was named 
+"2004-2014_dax_ftse". (daily periodicity from 05/04 - 05/14)'
+
+Example: 'A combined plot containing the following: the log returns of a portfolio 
+as points, the VaR using the RMA and EMA methods as lines, and the exceedences of 
+RMA and EMA as rugs and Q-Q plots of the realized profits and losses over the 
+estimated Value-at-Risk for VaR RMA and VaR EMA. (01/2007 - 01/2009)'
