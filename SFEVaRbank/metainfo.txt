@@ -7,7 +7,6 @@ Description : 'Calculates the RMA and EMA of a portfolio of assets'
 
 Keywords : VaR, Value at Risk, risk, historical, RMA, EMA, delta-normal, qqplot
 
-
 Author : Marta Domagalska, Shawn Gao, Pegah Maham, David Pollack
 
 Submitted : 2016/12/12

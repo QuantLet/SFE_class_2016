@@ -32,8 +32,9 @@ emaWeight = function(h, gamma){
 }
 
 calcEMA = function(serie, gamma = 0.94, h = 250){
-  s = rle(is.na(serie))$length[1]
+  s      = rle(is.na(serie))$length[1]
   weight = emaWeight(h, gamma)
+  # ema calculation
   ema = sapply((s + h + 1): length(serie), FUN = function(n) {
     sum(serie[(n - h): (n - 1)] * serie[(n - h): (n - 1)] * weight, na.rm = T)})
   ema = c(rep(NA, s + h), ema)
@@ -42,14 +43,15 @@ calcEMA = function(serie, gamma = 0.94, h = 250){
 
 # Choose the Stocks
 # which(colnames(data) == "LLOYDS.BANKING.GROUP") == 34
-Stocks = data[year(data$Date) %in% c(2007, 2008, 2009), c(1,34)]
+Stocks = data[year(data$Date) %in% c(2007, 2008, 2009), c(1, 34)]
 
 # Build portfolio of log-returns
 Portfolio = data.frame(Date       = as.Date(Stocks$Date), 
-                       Price      = (Stocks[,2]),
-                       PercChange = c(NA,diff(log(Stocks[,2]))),
-                       AbsChange  = c(NA,diff(Stocks[,2])))
+                       Price      = (Stocks[, 2]),
+                       PercChange = c(NA,diff(log(Stocks[, 2]))),
+                       AbsChange  = c(NA,diff(Stocks[, 2])))
 
+# calculate t-value
 tCrit = qnorm(1 - alpha) 
 # calculate VaR
 Portfolio$VaRRMAY = calcRMA(Portfolio$PercChange, h = h) ^ 0.5 * tCrit
@@ -57,10 +59,14 @@ Portfolio$VaREMAY = calcEMA(Portfolio$PercChange, gamma = gamma, h = h) ^ 0.5 * 
 Portfolio$VaRRMAL = Portfolio$VaRRMAY * Portfolio$Price
 Portfolio$VaREMAL = Portfolio$VaREMAY * Portfolio$Price
 # calculate exceedences
-Portfolio$RugsRMAL = (Portfolio$AbsChange > Portfolio$VaRRMAL | Portfolio$AbsChange < -Portfolio$VaRRMAL)
-Portfolio$RugsEMAL = (Portfolio$AbsChange > Portfolio$VaREMAL | Portfolio$AbsChange < -Portfolio$VaREMAL)
-Portfolio$RugsRMAY = (Portfolio$PercChange > Portfolio$VaRRMAY | Portfolio$PercChange < -Portfolio$VaRRMAY)
-Portfolio$RugsEMAY = (Portfolio$PercChange > Portfolio$VaREMAY | Portfolio$PercChange < -Portfolio$VaREMAY)
+Portfolio$RugsRMAL = (Portfolio$AbsChange > Portfolio$VaRRMAL | 
+                      Portfolio$AbsChange < -Portfolio$VaRRMAL)
+Portfolio$RugsEMAL = (Portfolio$AbsChange > Portfolio$VaREMAL | 
+                      Portfolio$AbsChange < -Portfolio$VaREMAL)
+Portfolio$RugsRMAY = (Portfolio$PercChange > Portfolio$VaRRMAY | 
+                      Portfolio$PercChange < -Portfolio$VaRRMAY)
+Portfolio$RugsEMAY = (Portfolio$PercChange > Portfolio$VaREMAY | 
+                      Portfolio$PercChange < -Portfolio$VaREMAY)
 # remove rows without VaR
 Portfolio = Portfolio[- c(1 :h), ]
 
@@ -76,8 +82,10 @@ lines(Portfolio$Date, - Portfolio$VaREMAL, col = "blue", lwd = 2)
 # Add Rugs, for Rma at the bottom, for Ema at the top
 rug(Portfolio$Date[Portfolio$RugsRMAL], side = 1, col = "red", lwd = 2)
 rug(Portfolio$Date[Portfolio$RugsEMAL], side = 3, col = "blue", lwd = 2)
-points(Portfolio$Date[Portfolio$RugsRMAL], Portfolio$AbsChange[Portfolio$RugsRMAL], col = "red", pch = 4, lwd = 2, cex = 1.5)
-points(Portfolio$Date[Portfolio$RugsEMAL], Portfolio$AbsChange[Portfolio$RugsEMAL], col = "blue", pch = 0, lwd = 2, cex = 1.5)
+points(Portfolio$Date[Portfolio$RugsRMAL], Portfolio$AbsChange[Portfolio$RugsRMAL], 
+       col = "red", pch = 4, lwd = 2, cex = 1.5)
+points(Portfolio$Date[Portfolio$RugsEMAL], Portfolio$AbsChange[Portfolio$RugsEMAL], 
+       col = "blue", pch = 0, lwd = 2, cex = 1.5)
 dev.print(device = png, filename = 'VaR_LtAbsChange.png', width = 1200, height = 600)
 dev.off()
 
@@ -91,14 +99,18 @@ lines(Portfolio$Date, Portfolio$VaREMAY, col = "blue", lwd = 2)
 lines(Portfolio$Date, - Portfolio$VaREMAY, col = "blue", lwd = 2)
 
 # Add Rugs, for Rma at the bottom, for Ema at the top
-Portfolio$RugsRMAY = (Portfolio$PercChange > Portfolio$VaRRMAY | Portfolio$PercChange < -Portfolio$VaRRMAY)
-Portfolio$RugsEMAY = (Portfolio$PercChange > Portfolio$VaREMAY | Portfolio$PercChange < -Portfolio$VaREMAY)
+Portfolio$RugsRMAY = (Portfolio$PercChange > Portfolio$VaRRMAY | 
+                      Portfolio$PercChange < -Portfolio$VaRRMAY)
+Portfolio$RugsEMAY = (Portfolio$PercChange > Portfolio$VaREMAY | 
+                      Portfolio$PercChange < -Portfolio$VaREMAY)
 # plot rug
 rug(Portfolio$Date[Portfolio$RugsRMAY], side = 1, col = "red")
 rug(Portfolio$Date[Portfolio$RugsEMAY], side = 3, col = "blue")
 # plot exceedences
-points(Portfolio$Date[Portfolio$RugsRMAY], Portfolio$PercChange[Portfolio$RugsRMAY], col = "red", pch = 4, lwd = 2, cex = 1.5)
-points(Portfolio$Date[Portfolio$RugsEMAY], Portfolio$PercChange[Portfolio$RugsEMAY], col = "blue", pch = 0, lwd = 2, cex = 1.5)
+points(Portfolio$Date[Portfolio$RugsRMAY], Portfolio$PercChange[Portfolio$RugsRMAY], 
+       col = "red", pch = 4, lwd = 2, cex = 1.5)
+points(Portfolio$Date[Portfolio$RugsEMAY], Portfolio$PercChange[Portfolio$RugsEMAY], 
+       col = "blue", pch = 0, lwd = 2, cex = 1.5)
 dev.print(device = png, filename = 'VaR_YtPercChange.png', width = 1200, height = 600)
 dev.off()
 
