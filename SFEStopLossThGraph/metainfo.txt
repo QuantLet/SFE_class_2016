@@ -1,0 +1,28 @@
+
+Name of Quantlet : SFEStopLossThGraph
+
+Published in : Statistics of Financial Markets I
+
+Description : 'Generates and plots the path of two stocks and marks the theoretical buying
+and selling time points in continuous time of a stop-loss hedging strategy'
+
+Keywords : stop-loss, hedging, continuous, asset, black-scholes, call, simulation, cost, delta, strategy
+
+See also : SFEStopLossLogic, SFESLDHPerf, SFESLDHConv, SFEDeltaHedgeGraph, SFSstoploss
+
+Author : Simon Gstöhl, Florian Schulz
+
+Submitted : 2016/12/05
+
+Input: 
+- S0_1: Stock price at t = 0 for first path
+- S0_2: Stock price at t = 0 for second path
+- sig: Volatility
+- r: Risk free interest rate
+- K: Strike price
+- t0: Starting time (1 week = 1/52)
+- mat: Maturity
+- dt: Time period between steps.
+
+Output : 'A plot of two simulated stocks with theoretical buy and sell times in comtinuous time within
+the stop-loss hedging strategy.'

@@ -9,8 +9,8 @@ observation frequancy'
 Keywords : 'delta, stop-loss, hedging, convergence, asset, black-scholes, call, simulation, cost,
 delta, strategy'
 
-See also : 'SFESLDHPerf, SFEStopLossLogic, SFEDeltaHedgeGraph, SFSstoploss, SFEDeltaHedging,
-SFEDeltahedgingLogic, SFEDeltahedgingdepend'
+See also : 'SFESLDHPerf, SFEStopLossLogic, SFEDeltaHedgeGraph, SFEDeltaHedging, SFEStopLossThGraph,
+SFSstoploss, SFEDeltahedgingLogic, SFEDeltahedgingdepend'
 
 Author : Simon Gstöhl, Florian Schulz
 
