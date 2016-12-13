@@ -6,3 +6,4 @@
 |A       |SFESLDHConv          |SFESLDHConv          |18 word(s), 91 Character(s)  |11: 9 (standard), 2 (new) |r        |q, p, a, d, k, i, o, s, sa |                                         |
 |A       |SFESLDHPerf          |SFESLDHPerf          |12 word(s), 80 Character(s)  |11: 9 (standard), 2 (new) |r        |q, p, a, d, k, i, o, s, sa |                                         |
 |A       |SFEStopLossLogic     |SFEStopLossLogic     |23 word(s), 111 Character(s) |9: 8 (standard), 1 (new)  |r        |q, p, a, d, k, i, o, s, sa |                                         |
+|A       |SFEStopLossThGraph   |SFEStopLossThGraph   |26 word(s), 125 Character(s) |10: 9 (standard), 1 (new) |r        |q, p, a, d, k, i, o, s, sa |                                         |
