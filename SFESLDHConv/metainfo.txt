@@ -1,0 +1,28 @@
+
+Name of Quantlet : SFESLDHConv
+
+Published in : Statistics of Financial Markets I
+
+Description : 'Plots a log-log-graph of the performance of stop-loss and delta hedging for decreasing
+observation frequancy'
+
+Keywords : 'delta, stop-loss, hedging, convergence, asset, black-scholes, call, simulation, cost,
+delta, strategy'
+
+See also : 'SFESLDHPerf, SFEStopLossLogic, SFEDeltaHedgeGraph, SFSstoploss, SFEDeltaHedging,
+SFEStopLossThGraph, SFEDeltahedgingLogic, SFEDeltahedgingdepend'
+
+Author : Simon Gstöhl, Florian Schulz
+
+Submitted : 2016/12/05
+
+Input: 
+- S0: Stock price at t = 0
+- sig: Volatility
+- r: Risk free interest rate
+- K: Strike price
+- t0: Starting time (1 week = 1/52)
+- mat: Maturity
+- steps: number of calculation steps.
+
+Output : A log-log-plot of a performance measure against decreasing observation frequancy.
