@@ -1,6 +1,14 @@
-|Q-Quali |Q folders          |Q Names            |Descriptions stats           |Keywords stats            |Meta Info data fields      |
-|:-------|:------------------|:------------------|:----------------------------|:-------------------------|:--------------------------|
-|A       |SFEDeltaHedgeGraph |SFEDeltaHedgeGraph |20 word(s), 120 Character(s) |9: 9 (standard), 0 (new)  |q, p, a, d, k, i, o, s, sa |
-|A       |SFESLDHConv        |SFESLDHConv        |18 word(s), 91 Character(s)  |11: 9 (standard), 2 (new) |q, p, a, d, k, i, o, s, sa |
-|A       |SFESLDHPerf        |SFESLDHPerf        |12 word(s), 80 Character(s)  |11: 9 (standard), 2 (new) |q, p, a, d, k, i, o, s, sa |
-|A       |SFEStopLossLogic   |SFEStopLossLogic   |23 word(s), 111 Character(s) |9: 8 (standard), 1 (new)  |q, p, a, d, k, i, o, s, sa |
+|Q-Quali |Q folders            |Q Names              |Descriptions stats           |Keywords stats            |Found SW |Meta Info data fields      |Q Code    |PDF files                                |
+|:-------|:--------------------|:--------------------|:----------------------------|:-------------------------|:--------|:--------------------------|:---------|:----------------------------------------|
+|A       |SFEDeltaGammaHedging |SFEDeltaGammaHedging |10 word(s), 63 Character(s)  |8: 7 (standard), 1 (new)  |r        |q, p, a, d, k, i, o, s, sa |ok        |                                         |
+|B       |SFEDeltaGammaSim     |SFEDeltaGammaSim     |12 word(s), 74 Character(s)  |9: 8 (standard), 1 (new)  |r        |q, p, a, d, k, i, o, s, sa |ok        |If PDF is a picture PNG or JPG required! |
+|A       |SFEDeltaHedgeGraph   |SFEDeltaHedgeGraph   |20 word(s), 120 Character(s) |9: 9 (standard), 0 (new)  |r        |q, p, a, d, k, i, o, s, sa |ok        |                                         |
+|N       |SFEDeltaVegaHedging  |No metainfo found!   |NA                           |0: 0 (standard), 0 (new)  |r        |                           |NOT FOUND |                                         |
+|A       |SFEHedgeRatio        |SFEHedgeRatio        |43 word(s), 228 Character(s) |7: 7 (standard), 0 (new)  |r        |q, p, a, d, k, df, sa      |ok        |                                         |
+|A       |SFEHedgeRatioDCC     |SFEHedgeRatioDCC     |65 word(s), 344 Character(s) |8: 8 (standard), 0 (new)  |r        |q, p, a, d, k, df, sa      |ok        |                                         |
+|N       |SFERhoHedging        |No metainfo found!   |NA                           |0: 0 (standard), 0 (new)  |r        |                           |NOT FOUND |                                         |
+|A       |SFESLDHConv          |SFESLDHConv          |18 word(s), 91 Character(s)  |11: 9 (standard), 2 (new) |r        |q, p, a, d, k, i, o, s, sa |ok        |                                         |
+|A       |SFESLDHPerf          |SFESLDHPerf          |12 word(s), 80 Character(s)  |11: 9 (standard), 2 (new) |r        |q, p, a, d, k, i, o, s, sa |ok        |                                         |
+|A       |SFEStopLossLogic     |SFEStopLossLogic     |23 word(s), 111 Character(s) |9: 8 (standard), 1 (new)  |r        |q, p, a, d, k, i, o, s, sa |ok        |                                         |
+|A       |SFEStopLossThGraph   |SFEStopLossThGraph   |26 word(s), 125 Character(s) |10: 9 (standard), 1 (new) |r        |q, p, a, d, k, i, o, s, sa |ok        |                                         |
+|N       |SFEVegaHedging       |No metainfo found!   |NA                           |0: 0 (standard), 0 (new)  |r        |                           |NOT FOUND |                                         |

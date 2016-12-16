@@ -1,0 +1,13 @@
+Name of Quantlet:  SFMVegaHedging
+
+Published in:      Statistics of Financial Markets I
+
+Description:       Constructing a vega-neutral portfolio 
+
+Keywords:          vega, hedging, neutral portfolio, simulation, hedging cost
+
+Author:            Victor Cluzel, Florian Reichert
+
+Submitted:         Wed, November 30 2016
+
+Output:  	   Graphs of hedging costs and vega dependency on stock price and time to maturity

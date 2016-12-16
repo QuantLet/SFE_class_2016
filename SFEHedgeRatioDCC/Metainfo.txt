@@ -1,0 +1,16 @@
+Name of Quantlet: SFEHedgeRatioDCC
+
+Published in: Statistics of Financial Markets I
+
+Description: 'Computes and plots the optimal hedge ratio for a given dataset. The optimal hedge ratio minimized the variance of the hedge portfolio. A Dynamic conditional correlation (DCC) GARCH model is estimated. Using a rolling window approach, forecasts for the hedge ratio (as the ratio of conditional covariance and conditional variance of the future) are made daily. The example uses daily data from DAX and FDAX (11/2014 - 11/2016).'
+
+Keywords: financial, risk, distribution, variance, optimization, dax, derivative, garch
+
+Author: Sophie Burgard, Anna Kubik
+
+Datafile: DAX_FDAX.csv
+
+See also: SFEHedgeRatio
+
+
+
