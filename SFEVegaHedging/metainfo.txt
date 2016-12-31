@@ -1,4 +1,5 @@
-Name of Quantlet:  SFMVegaHedging
+
+Name of Quantlet:  SFEVegaHedging
 
 Published in:      Statistics of Financial Markets I
 

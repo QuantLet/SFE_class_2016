@@ -1,4 +1,4 @@
-Name of Quantlet:  SFMVegaDeltaHedging
+Name of Quantlet:  SFEDeltaVegaHedging
 
 Published in:      Statistics of Financial Markets I
 

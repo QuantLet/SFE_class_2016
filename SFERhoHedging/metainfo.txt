@@ -1,4 +1,5 @@
-Name of Quantlet:  SFMRhoHedging
+
+Name of Quantlet:  SFERhoHedging
 
 Published in:      Statistics of Financial Markets I
 
