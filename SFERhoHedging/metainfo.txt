@@ -1,0 +1,14 @@
+
+Name of Quantlet:  SFERhoHedging
+
+Published in:      Statistics of Financial Markets I
+
+Description:       Constructing a rho-neutral portfolio 
+
+Keywords:          rho, hedging, neutral portfolio, simulation, hedging cost
+
+Author:            Victor Cluzel, Florian Reichert
+
+Submitted:         Wed, November 30 2016
+
+Output:  	   Graphs of hedging costs and rho dependency on stock price and time to maturity

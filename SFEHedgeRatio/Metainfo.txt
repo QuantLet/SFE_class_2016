@@ -1,0 +1,16 @@
+Name of Quantlet: SFEHedgeRatio
+
+Published in: Statistics of Financial Markets I
+
+Description: 'Computes and plots the optimal hedge ratio for a given dataset. The hedge ratio is optimal under the assumption of gaussian distributed returns. The optimal hedge ratio minimized the variance of the hedge portfolio. The example uses daily data from DAX and FDAX (11/2014 - 11/2016).'
+
+Keywords: financial, risk, distribution, variance, optimization, dax, derivative
+
+Author: Sophie Burgard, Anna Kubik
+
+Datafile: DAX_FDAX.csv
+
+See also: SFEHedgeRatioDCC
+
+
+

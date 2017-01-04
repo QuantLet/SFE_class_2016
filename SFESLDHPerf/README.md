@@ -15,8 +15,8 @@ frequancies'
 Keywords : 'stop-loss, delta, hedging, asset, performance, black-scholes, call, simulation, cost,
 delta, strategy'
 
-See also : 'SFESLDHConv, SFEStopLossLogic, SFEDeltaHedgeGraph, SFSstoploss, SFEDeltaHedging,
-SFEDeltahedgingLogic, SFEDeltahedgingdepend'
+See also : 'SFESLDHConv, SFEStopLossLogic, SFEDeltaHedgeGraph, SFEStopLossThGraph, SFSstoploss,
+SFEDeltaHedging, SFEDeltahedgingLogic, SFEDeltahedgingdepend'
 
 Author : Simon Gstöhl, Florian Schulz
 
