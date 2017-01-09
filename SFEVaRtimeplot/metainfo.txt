@@ -1,11 +1,11 @@
 
-Name of Quantlet : SFEVaRbank
+Name of Quantlet : SFEVaRtimeplot
 
 Published in : Statistics of Financial Markets I
 
 Description : 'Calculates the RMA and EMA of a portfolio of assets'
 
-Keywords : VaR, data visualization, risk, portfolio, RMA, EMA, estimation, qqplot, exceedance, financial, forecast, normal-distribution, time-series
+Keywords : VaR, data visualization, risk, portfolio, RMA, EMA, estimation, exceedance, financial, forecast, normal-distribution, time-series
 
 Author : Marta Domagalska, Xiang Gao, Pegah Maham, David Pollack
 
@@ -23,6 +23,5 @@ assortment of stocks of other large companies.  Originally this file was named
 
 Example: 'A combined plot containing the following: the log returns of a portfolio 
 as points, the VaR using the RMA and EMA methods as lines, and the exceedences of 
-RMA and EMA as rugs and Q-Q plots of the realized profits and losses over the 
-estimated Value-at-Risk for VaR RMA and VaR EMA. (01/2007 - 01/2009)'
+RMA and EMA as rugs. (01/2007 - 01/2009)'
 

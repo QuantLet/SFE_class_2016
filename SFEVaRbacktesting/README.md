@@ -1,3 +1,54 @@
+
+[<img src="https://github.com/QuantLet/Styleguide-and-FAQ/blob/master/pictures/banner.png" width="888" alt="Visit QuantNet">](http://quantlet.de/)
+
+## [<img src="https://github.com/QuantLet/Styleguide-and-FAQ/blob/master/pictures/qloqo.png" alt="Visit QuantNet">](http://quantlet.de/) **SFEVaRbank** [<img src="https://github.com/QuantLet/Styleguide-and-FAQ/blob/master/pictures/QN2.png" width="60" alt="Visit QuantNet 2.0">](http://quantlet.de/)
+
+```yaml
+
+Name of Quantlet : SFEVaRbank
+
+Published in : Statistics of Financial Markets I
+
+Description : Calculates the RMA and EMA of a portfolio of assets
+
+Keywords : 'VaR, data visualization, risk, portfolio, RMA, EMA, estimation, qqplot, exceedance, financial, forecast, normal-distribution, time-series£¬ backtesting
+
+Author : Marta Domagalska, Xiang Gao, Pegah Maham, David Pollack
+
+Submitted : 2016/12/12
+
+Input: 
+- h: Time horizon for RMA and EMA
+- alpha: Confidence-level of RMA and EMA
+- gamma: decay of EMA
+
+Datafile: 
+- SFEVaRbank.csv: 'Time-series of the nominal prices of the DAX30, FTSE 100, and an assortment of
+stocks of other large companies.  Originally this file was named "2004-2014_dax_ftse". (daily
+periodicity from 05/04 - 05/14)'
+
+Example : 'A combined plot containing the following: the log returns of a portfolio as points, the
+VaR using the RMA and EMA methods as lines, and the exceedences of RMA and EMA as rugs and Q-Q
+plots of the realized profits and losses over the estimated Value-at-Risk for VaR RMA and VaR EMA.
+(01/2007 - 01/2009)'
+
+```
+
+![Picture1](EMAoutlierst.png)
+
+![Picture2](RMAoutlierst.png)
+
+![Picture3](VaRReliability_EMA.png)
+
+![Picture4](VaRReliability_RMA.png)
+
+![Picture5](VaR_LtAbsChange.png)
+
+![Picture6](VaR_YtPercChange.png)
+
+
+### R Code:
+```r
 # clear variables and close windows
 rm(list = ls(all = TRUE))
 graphics.off()
@@ -46,10 +97,7 @@ pcolors = data.frame(rma = "blue", ema = "red", stringsAsFactors=FALSE)
 
 # Choose the Stocks
 # which(colnames(data) == "LLOYDS.BANKING.GROUP") == 34
-Stocks = data[, c(1, 34)]
-
-# show only the specific years
-# Stocks = data[year(data$Date) %in% c(2007, 2008, 2009), c(1, 34)]
+Stocks = data[year(data$Date) %in% c(2007, 2008, 2009), c(1, 34)]
 
 # Build portfolio of log-returns
 Portfolio = data.frame(Date       = as.Date(Stocks$Date), 
@@ -79,7 +127,7 @@ Portfolio = Portfolio[- c(1 :h), ]
 # Plot Result for Lt/AbsChange
 ymax = 1.05 * max(abs(min(Portfolio$AbsChange)), abs(max(Portfolio$AbsChange)))
 plot(Portfolio$Date, Portfolio$AbsChange, pch = 16, cex = 0.3, ylim = c(-ymax, ymax), 
-     ylab = expression({L}[t]), xlab = "Date", main = "VaR and Exceedences (2004.05 - 2014.05)")
+     ylab = expression({L}[t]), xlab = "Date", main = "VaR and Exceedences (2008 - 2009)")
 lines(Portfolio$Date, Portfolio$VaRRMAL, col = pcolors$rma, lty = 2, lwd = 2)
 lines(Portfolio$Date, - Portfolio$VaRRMAL, col = pcolors$rma, lty = 2, lwd = 2)
 lines(Portfolio$Date, Portfolio$VaREMAL, col = pcolors$ema, lwd = 2)
@@ -93,12 +141,12 @@ points(Portfolio$Date[Portfolio$RugsRMAL], Portfolio$AbsChange[Portfolio$RugsRMA
 points(Portfolio$Date[Portfolio$RugsEMAL], Portfolio$AbsChange[Portfolio$RugsEMAL], 
        col = "blue", pch = 0, lwd = 2, cex = 1.5)
 dev.print(device = png, filename = 'VaR_LtAbsChange.png', width = 1200, height = 600)
-# dev.off()
+dev.off()
 
 # Plot Result for Yt/PercChange
 ymax = 1.05 * max(abs(min(Portfolio$PercChange)), abs(max(Portfolio$PercChange)))
 plot(Portfolio$Date, Portfolio$PercChange, pch = 16, cex = 0.2, ylim = c(-ymax, ymax), 
-     ylab = expression({Y}[t]), xlab = "Date", main = "VaR and Exceedences (2004.05 - 2014.05)")
+     ylab = expression({Y}[t]), xlab = "Date", main = "VaR and Exceedences (2008 - 2009)")
 lines(Portfolio$Date, Portfolio$VaRRMAY, col = pcolors$rma, lty = 2, lwd = 2)
 lines(Portfolio$Date, - Portfolio$VaRRMAY, col = pcolors$rma, lty = 2, lwd = 2)
 lines(Portfolio$Date, Portfolio$VaREMAY, col = pcolors$ema, lwd = 2)
@@ -110,27 +158,27 @@ Portfolio$RugsRMAY = (Portfolio$PercChange > Portfolio$VaRRMAY |
 Portfolio$RugsEMAY = (Portfolio$PercChange > Portfolio$VaREMAY | 
                         Portfolio$PercChange < -Portfolio$VaREMAY)
 # plot rug
-rug(Portfolio$Date[Portfolio$RugsRMAY], side = 1, col = pcolors$rma, lwd = 2)
-rug(Portfolio$Date[Portfolio$RugsEMAY], side = 3, col = pcolors$ema, lwd = 2)
+rug(Portfolio$Date[Portfolio$RugsRMAY], side = 1, col = pcolors$rma)
+rug(Portfolio$Date[Portfolio$RugsEMAY], side = 3, col = pcolors$ema)
 # plot exceedences
 points(Portfolio$Date[Portfolio$RugsRMAY], Portfolio$PercChange[Portfolio$RugsRMAY], 
        col = "red", pch = 4, lwd = 2, cex = 1.5)
 points(Portfolio$Date[Portfolio$RugsEMAY], Portfolio$PercChange[Portfolio$RugsEMAY], 
        col = "blue", pch = 0, lwd = 2, cex = 1.5)
 dev.print(device = png, filename = 'VaR_YtPercChange.png', width = 1200, height = 600)
-# dev.off()
+dev.off()
 
 # Plot qqplots
-qqnorm(Portfolio$AbsChange/Portfolio$VaRRMAL, main = "VaR (RMA) Reliability (2004.05 - 2014.05)",
+qqnorm(Portfolio$AbsChange/Portfolio$VaRRMAL, main = "VaR (RMA) Reliability (2008 - 2009)",
        xlab = "Theoretical Quantiles", ylab = "P&L over VaR Quantiles", ylim = c(-3, 3))
 qqline(Portfolio$AbsChange/Portfolio$VaRRMAL)
 dev.print(device = png, filename = 'VaRReliability_RMA.png', width = 500, height = 500)
-# dev.off()
-qqnorm(Portfolio$AbsChange/Portfolio$VaREMAL, main = "VaR (EMA) Reliability (2004.05 - 2014.05)",
+dev.off()
+qqnorm(Portfolio$AbsChange/Portfolio$VaREMAL, main = "VaR (EMA) Reliability (2008 - 2009)",
        xlab = "Theoretical Quantiles", ylab = "P&L over VaR Quantiles", ylim = c(-3, 3))
 qqline(Portfolio$AbsChange/Portfolio$VaREMAL)
 dev.print(device = png, filename = 'VaRReliability_EMA.png', width = 500, height = 500)
-# dev.off()
+dev.off()
 
 
 ################################################################################
@@ -148,14 +196,14 @@ plot(Portfolio$Date,
 	ylim = c(0, 1), 
 	ylab = expression({Z}[t]), 
 	xlab = "Year", 
-	main = "Time plot for exceedances for RMA",
+	main = "Time plot for exceedances for RMA at 80% significance level",
 	yaxt = "n")
 # Add Rugs, for Rma at the bottom, for Ema at the top
 rug(Portfolio$Date[Portfolio$RugsRMAL], side = 3, col = pcolors$rma, lwd = 2)
 rug(Portfolio$Date[!Portfolio$RugsRMAL], side = 1, col = "black", lwd = 2)
 
 dev.print(device = png, filename = 'RMAoutlierst.png', width = 1200, height = 600)
-# dev.off()
+dev.off()
 
 
 # Plot RMA outliers over time
@@ -167,14 +215,14 @@ plot(Portfolio$Date,
 	ylim = c(0, 1), 
 	ylab = expression({Z}[t]), 
 	xlab = "Year", 
-	main = "Time plot for exceedances for EMA",
+	main = "Time plot for exceedances for EMA at 80% significance level",
 	yaxt = "n")
 # Add Rugs, for Rma at the bottom, for Ema at the top
 rug(Portfolio$Date[Portfolio$RugsEMAL], side = 3, col = pcolors$ema, lwd = 2)
 rug(Portfolio$Date[!Portfolio$RugsEMAL], side = 1, col = "black", lwd = 2)
 
 dev.print(device = png, filename = 'EMAoutlierst.png', width = 1200, height = 600)
-# dev.off()
+dev.off()
 
 
 
@@ -358,3 +406,5 @@ qqplot(rt(500, df = 4),
 qqline(y2, col = 2)
 
 ################################################################################
+
+```

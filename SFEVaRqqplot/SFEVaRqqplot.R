@@ -9,7 +9,7 @@ lapply(libraries, library, quietly = TRUE, character.only = TRUE)
 
 # Inputs
 h     = 250
-alpha = 0.01
+alpha = 0.2
 gamma = 0.94
 
 # Load Data
@@ -46,10 +46,7 @@ pcolors = data.frame(rma = "blue", ema = "red", stringsAsFactors=FALSE)
 
 # Choose the Stocks
 # which(colnames(data) == "LLOYDS.BANKING.GROUP") == 34
-Stocks = data[, c(1, 34)]
-
-# show only the specific years
-# Stocks = data[year(data$Date) %in% c(2007, 2008, 2009), c(1, 34)]
+Stocks = data[year(data$Date) %in% c(2007, 2008, 2009), c(1, 34)]
 
 # Build portfolio of log-returns
 Portfolio = data.frame(Date       = as.Date(Stocks$Date), 
@@ -76,107 +73,23 @@ Portfolio$RugsEMAY = (Portfolio$PercChange > Portfolio$VaREMAY |
 # remove rows without VaR
 Portfolio = Portfolio[- c(1 :h), ]
 
-# Plot Result for Lt/AbsChange
-ymax = 1.05 * max(abs(min(Portfolio$AbsChange)), abs(max(Portfolio$AbsChange)))
-plot(Portfolio$Date, Portfolio$AbsChange, pch = 16, cex = 0.3, ylim = c(-ymax, ymax), 
-     ylab = expression({L}[t]), xlab = "Date", main = "VaR and Exceedences (2004.05 - 2014.05)")
-lines(Portfolio$Date, Portfolio$VaRRMAL, col = pcolors$rma, lty = 2, lwd = 2)
-lines(Portfolio$Date, - Portfolio$VaRRMAL, col = pcolors$rma, lty = 2, lwd = 2)
-lines(Portfolio$Date, Portfolio$VaREMAL, col = pcolors$ema, lwd = 2)
-lines(Portfolio$Date, - Portfolio$VaREMAL, col = pcolors$ema, lwd = 2)
-
-# Add Rugs, for Rma at the bottom, for Ema at the top
-rug(Portfolio$Date[Portfolio$RugsRMAL], side = 1, col = pcolors$rma, lwd = 2)
-rug(Portfolio$Date[Portfolio$RugsEMAL], side = 3, col = pcolors$ema, lwd = 2)
-points(Portfolio$Date[Portfolio$RugsRMAL], Portfolio$AbsChange[Portfolio$RugsRMAL], 
-       col = "red", pch = 4, lwd = 2, cex = 1.5)
-points(Portfolio$Date[Portfolio$RugsEMAL], Portfolio$AbsChange[Portfolio$RugsEMAL], 
-       col = "blue", pch = 0, lwd = 2, cex = 1.5)
-dev.print(device = png, filename = 'VaR_LtAbsChange.png', width = 1200, height = 600)
-# dev.off()
-
-# Plot Result for Yt/PercChange
-ymax = 1.05 * max(abs(min(Portfolio$PercChange)), abs(max(Portfolio$PercChange)))
-plot(Portfolio$Date, Portfolio$PercChange, pch = 16, cex = 0.2, ylim = c(-ymax, ymax), 
-     ylab = expression({Y}[t]), xlab = "Date", main = "VaR and Exceedences (2004.05 - 2014.05)")
-lines(Portfolio$Date, Portfolio$VaRRMAY, col = pcolors$rma, lty = 2, lwd = 2)
-lines(Portfolio$Date, - Portfolio$VaRRMAY, col = pcolors$rma, lty = 2, lwd = 2)
-lines(Portfolio$Date, Portfolio$VaREMAY, col = pcolors$ema, lwd = 2)
-lines(Portfolio$Date, - Portfolio$VaREMAY, col = pcolors$ema, lwd = 2)
-
-# Add Rugs, for Rma at the bottom, for Ema at the top
-Portfolio$RugsRMAY = (Portfolio$PercChange > Portfolio$VaRRMAY | 
-                        Portfolio$PercChange < -Portfolio$VaRRMAY)
-Portfolio$RugsEMAY = (Portfolio$PercChange > Portfolio$VaREMAY | 
-                        Portfolio$PercChange < -Portfolio$VaREMAY)
-# plot rug
-rug(Portfolio$Date[Portfolio$RugsRMAY], side = 1, col = pcolors$rma, lwd = 2)
-rug(Portfolio$Date[Portfolio$RugsEMAY], side = 3, col = pcolors$ema, lwd = 2)
-# plot exceedences
-points(Portfolio$Date[Portfolio$RugsRMAY], Portfolio$PercChange[Portfolio$RugsRMAY], 
-       col = "red", pch = 4, lwd = 2, cex = 1.5)
-points(Portfolio$Date[Portfolio$RugsEMAY], Portfolio$PercChange[Portfolio$RugsEMAY], 
-       col = "blue", pch = 0, lwd = 2, cex = 1.5)
-dev.print(device = png, filename = 'VaR_YtPercChange.png', width = 1200, height = 600)
-# dev.off()
 
 # Plot qqplots
-qqnorm(Portfolio$AbsChange/Portfolio$VaRRMAL, main = "VaR (RMA) Reliability (2004.05 - 2014.05)",
+qqnorm(Portfolio$AbsChange/Portfolio$VaRRMAL, main = "VaR (RMA) Reliability (2008 - 2009)",
        xlab = "Theoretical Quantiles", ylab = "P&L over VaR Quantiles", ylim = c(-3, 3))
 qqline(Portfolio$AbsChange/Portfolio$VaRRMAL)
-dev.print(device = png, filename = 'VaRReliability_RMA.png', width = 500, height = 500)
+dev.print(device = png, filename = 'VaRqqplotRMA.png', width = 500, height = 500)
 # dev.off()
-qqnorm(Portfolio$AbsChange/Portfolio$VaREMAL, main = "VaR (EMA) Reliability (2004.05 - 2014.05)",
+qqnorm(Portfolio$AbsChange/Portfolio$VaREMAL, main = "VaR (EMA) Reliability (2008 - 2009)",
        xlab = "Theoretical Quantiles", ylab = "P&L over VaR Quantiles", ylim = c(-3, 3))
 qqline(Portfolio$AbsChange/Portfolio$VaREMAL)
-dev.print(device = png, filename = 'VaRReliability_EMA.png', width = 500, height = 500)
+dev.print(device = png, filename = 'VaRqqplotEMA.png', width = 500, height = 500)
 # dev.off()
 
 
 ################################################################################
 ### BACKTESTING PART
 ################################################################################
-
-### PLOT OUTLIERS AS function of time for 80% significance level  (alpha=20%)
-
-# Plot RMA outliers over time
-plot(Portfolio$Date, 
-	Portfolio$AbsChange, 
-	col  = "white",
-	pch  = 16, 
-	cex  = 0.3, 
-	ylim = c(0, 1), 
-	ylab = expression({Z}[t]), 
-	xlab = "Year", 
-	main = "Time plot for exceedances for RMA",
-	yaxt = "n")
-# Add Rugs, for Rma at the bottom, for Ema at the top
-rug(Portfolio$Date[Portfolio$RugsRMAL], side = 3, col = pcolors$rma, lwd = 2)
-rug(Portfolio$Date[!Portfolio$RugsRMAL], side = 1, col = "black", lwd = 2)
-
-dev.print(device = png, filename = 'RMAoutlierst.png', width = 1200, height = 600)
-# dev.off()
-
-
-# Plot RMA outliers over time
-plot(Portfolio$Date, 
-	Portfolio$AbsChange, 
-	col  = "white", 
-	pch  = 16, 
-	cex  = 0.3, 
-	ylim = c(0, 1), 
-	ylab = expression({Z}[t]), 
-	xlab = "Year", 
-	main = "Time plot for exceedances for EMA",
-	yaxt = "n")
-# Add Rugs, for Rma at the bottom, for Ema at the top
-rug(Portfolio$Date[Portfolio$RugsEMAL], side = 3, col = pcolors$ema, lwd = 2)
-rug(Portfolio$Date[!Portfolio$RugsEMAL], side = 1, col = "black", lwd = 2)
-
-dev.print(device = png, filename = 'EMAoutlierst.png', width = 1200, height = 600)
-# dev.off()
-
-
 
 ################################################################################
 ### BACKTESTING - Expected Shortfall
@@ -292,38 +205,6 @@ signRMAt = 1 - pnorm(testRMAt, mean = 0, sd = 1, lower.tail = TRUE, log.p = FALS
 signEMAt = 1 - pnorm(testEMAt, mean = 0, sd = 1, lower.tail = TRUE, log.p = FALSE)
 
 
-################################################################################
-### PRINT results
-
-# Results for N(0,1) assumption
-ESn
-ESRMAn
-ESEMAn
-sigmaESn
-sigmaESRMAn
-sigmaESEMAn
-testRMAn
-testEMAn
-signRMAn * 100
-signEMAn * 100
-NRMAn
-NEMAn
-
-# Results for t(20) assumption
-ESt
-#ESRMAt
-#ESEMAt
-sigmaESt
-#sigmaESRMAt
-#sigmaESEMAt
-testRMAt
-testEMAt
-signRMAt * 100
-signEMAt * 100
-#NRMAt
-#NEMAt
-
-
 #################################################################################
 ### Standard Deviation for variable L(t+1)/VaR(t) see in the book: formula (16.19) 
 sdRMA = sd(Portfolio$ZRMA / tCrit, na.rm = TRUE)
@@ -349,6 +230,8 @@ qqplot(rt(500, df = 4),
 		ylim = c(-3, 3),
 		xlim = c(-3, 3))
 qqline(y1, col = 2)
+dev.print(device = png, filename = 'VaRqqplot_fattail1.png', width = 500, height = 500)
+# dev.off()
 
 
 qqplot(rt(500, df = 4), 
@@ -356,5 +239,7 @@ qqplot(rt(500, df = 4),
 		ylim = c(-3, 3),
 		xlim = c(-3, 3))
 qqline(y2, col = 2)
+dev.print(device = png, filename = 'VaRqqplot_fattail2.png', width = 500, height = 500)
+# dev.off()
 
 ################################################################################

@@ -1,5 +1,5 @@
 
-Name of Quantlet : SFEVaRbank
+Name of Quantlet : SFEVaRqqplot
 
 Published in : Statistics of Financial Markets I
 
@@ -21,8 +21,6 @@ Datafile:
 assortment of stocks of other large companies.  Originally this file was named 
 "2004-2014_dax_ftse". (daily periodicity from 05/04 - 05/14)'
 
-Example: 'A combined plot containing the following: the log returns of a portfolio 
-as points, the VaR using the RMA and EMA methods as lines, and the exceedences of 
-RMA and EMA as rugs and Q-Q plots of the realized profits and losses over the 
-estimated Value-at-Risk for VaR RMA and VaR EMA. (01/2007 - 01/2009)'
+Example: 'Q-Q plots of the realized profits and losses over the 
+estimated Value-at-Risk for VaR RMA and VaR EMA and with fat tail distributions. (01/2007 - 01/2009)'
 
