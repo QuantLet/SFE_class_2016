@@ -5,7 +5,7 @@ Published in : Statistics of Financial Markets I
 
 Description : 'Calculates the RMA and EMA of a portfolio of assets'
 
-Keywords : VaR, data visualization, risk, portfolio, RMA, EMA, estimation, qqplot, exceedance, financial, forecast, normal-distribution, time-series
+Keywords : VaR, data visualization, risk, portfolio, RMA, EMA, estimation, exceedance, financial, forecast, normal-distribution, time-series, backtesting
 
 Author : Marta Domagalska, Xiang Gao, Pegah Maham, David Pollack
 

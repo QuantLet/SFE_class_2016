@@ -14,7 +14,7 @@ Description : Calculates the RMA and EMA of a portfolio of assets
 Keywords : 'VaR, data visualization, risk, portfolio, RMA, EMA, estimation, qqplot, exceedance,
 financial, forecast, normal-distribution, time-series'
 
-Author : Marta Domagalska, Shawn Gao, Pegah Maham, David Pollack
+Author : Marta Domagalska, Xiang Gao, Pegah Maham, David Pollack
 
 Submitted : 2016/12/12
 
