@@ -1,0 +1,30 @@
+
+Name of Quantlet: SFEMCEuropConv
+
+Published in:     Statistics of Financial Markets I
+
+Description:     'Calculates the price and 95% confidence intervall of European 
+                  options using Monte Carlo Simulation for several numbers of MC 
+                  samples and visualizes the convergence of the MC estimate to 
+                  the true value.' 
+
+Keywords:        'european-option, option-price, monte-carlo, simulation, option, 
+                  call, put, black-scholes'
+
+Author:           Stefan Ritschel
+
+See also:         SFEAsianCallPayoffVis, SFEMCAsianCallVsEuropCall, SFEMCAsian, SFEMCEurop
+
+Submitted:        2016/12/16
+
+
+Input: 
+- s.0:   current stock price
+- k:     strike price
+- tau:   time to maturity in years
+- r:     annual interest rate
+- sigma: volatility
+
+Output:  Plot of European option prize as function of number of MC samples
+
+

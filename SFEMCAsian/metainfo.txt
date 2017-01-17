@@ -1,0 +1,29 @@
+
+Name of Quantlet: SFEMCAsian
+
+Published in:     Statistics of Financial Markets I
+
+Description:     'Calculates the prices and 95% Confidence Intervalls of Asian options
+                  using Monte Carlo Simulation.'
+
+Keywords:         exotic-option, option-price, monte-carlo, simulation, option, call, put
+
+Author:           Stefan Ritschel
+
+See also:         SFEAsianCallPayoffVis, SFEMCAsianCallVsEuropCall, SFEMCEurop, SFEMCEuropConv
+
+Submitted:        2016/12/16
+
+
+Input: 
+- s.0:   current stock price
+- k:     strike price
+- tau:   time to maturity in years
+- n.t:   number of time steps (used for stock simulation and averaging)
+- r:     annual interest rate
+- sigma: volatility
+- n.mc:  number MC samples
+
+Output:  Table with option prices
+
+

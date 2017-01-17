@@ -1,0 +1,28 @@
+
+Name of Quantlet: SFEAsianCallPayoffVis
+
+Published in:     Statistics of Financial Markets I
+
+Description:     'Visualizes the payoff of an Asian average strike and average 
+                  price call option for a generated stock path with average price 
+                  between price at maturity and strike price.' 
+
+Keywords:         plot, visualization, exotic-option, option, call
+
+Author:           Stefan Ritschel
+
+See also:         SFEMCAsian, SFEMCAsianCallVsEuropCall
+
+Submitted:        2016/12/16
+
+
+Input: 
+- s.0:   current stock price
+- k:     strike price
+- tau:   time to maturity in years
+- n.t:   number of time steps (used for stock simulation and averaging)
+- r:     annual interest rate
+- sigma: volatility
+
+
+

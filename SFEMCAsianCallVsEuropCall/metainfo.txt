@@ -1,0 +1,34 @@
+
+Name of Quantlet: SFEMCAsianCallVsEuropCall
+
+Published in:     Statistics of Financial Markets I
+
+Description:     'Plots option price as a function of current stock price for 
+                  Asian call and European call. Asian call price is calculated
+                  using Monte-Carlo Simulation, the European call price is 
+                  calculated using the Black-Scholes model.'
+              
+Keywords:        'exotic-option, european-option, option-price, monte-carlo, 
+                  simulation, option, call, put, black-scholes, stock-price'
+
+Author:           Stefan Ritschel
+
+See also:         SFEAsianCallPayoff, SFEMCAsian, SFEMCEurop, SFEMCEuropConv
+
+Submitted:        2016/12/16
+
+
+Input: 
+- s0min:  min current stock price
+- s0max:  max current stock price
+- s0step: stepsize for s0    
+- k:      strike price
+- tau:    time to maturity in years
+- n.t:    number of time steps
+- r:      annual interest rate
+- sigma:  volatility
+- n.mc:   number MC samples
+
+Output:   Plot of call prices as function of current stock price.
+
+
