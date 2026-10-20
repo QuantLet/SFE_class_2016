@@ -9,7 +9,7 @@ Name of Quantlet: SFEAsianCallPayoffVis
 
 Published in: Statistics of Financial Markets I
 
-Description: Visualizes the payoff of an Asian average strike and average
+Description: Visualizes the payoff of an Asian average strike and average price call option for a generated stock path with average price between price at maturity and strike price.
 
 Keywords: plot, visualization, exotic-option, option, call
 
