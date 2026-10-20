@@ -9,9 +9,9 @@ Name of Quantlet: SFEMCEuropConv
 
 Published in: Statistics of Financial Markets I
 
-Description: Calculates the price and 95% confidence intervall of European
+Description: Calculates the price and 95% confidence intervall of European options using Monte Carlo Simulation for several numbers of MC samples and visualizes the convergence of the MC estimate to the true value.
 
-Keywords: european-option, option-price, monte-carlo, simulation, option,
+Keywords: european-option, option-price, monte-carlo, simulation, option, call, put, black-scholes
 
 Author: Stefan Ritschel
 
