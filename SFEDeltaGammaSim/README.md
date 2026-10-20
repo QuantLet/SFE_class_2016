@@ -13,7 +13,7 @@ Description: Calculates performance of delta-gamma hedging for N simulated stock
 
 Keywords: delta-gamma, hedging, asset, performance, black-scholes, call, cost, strategy, simulation
 
-See also: SFESLDHConv, SFEStopLossLogic, SFEDeltaHedgeGraph, SFEDeltaHedging,
+See also: SFESLDHConv, SFEStopLossLogic, SFEDeltaHedgeGraph, SFEDeltaHedging, SFEDeltahedgingLogic, SFEDeltahedgingdepend
 
 Author: Kristian Boroz, Awdesch Melzer
 
