@@ -9,9 +9,9 @@ Name of Quantlet: SFEMCEurop
 
 Published in: Statistics of Financial Markets I
 
-Description: Calculates the price of European options using Monte Carlo Simulation
+Description: Calculates the price of European options using Monte Carlo Simulation and Black-Scholes-Model.
 
-Keywords: european-option, option-price, monte-carlo, simulation, option,
+Keywords: european-option, option-price, monte-carlo, simulation, option, call, put, black-scholes
 
 Author: Stefan Ritschel
 
