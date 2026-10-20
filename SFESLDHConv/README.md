@@ -9,11 +9,11 @@ Name of Quantlet: SFESLDHConv
 
 Published in: Statistics of Financial Markets I
 
-Description: Plots a log-log-graph of the performance of stop-loss and delta hedging for decreasing
+Description: Plots a log-log-graph of the performance of stop-loss and delta hedging for decreasing observation frequancy
 
-Keywords: delta, stop-loss, hedging, convergence, asset, black-scholes, call, simulation, cost,
+Keywords: delta, stop-loss, hedging, convergence, asset, black-scholes, call, simulation, cost, delta, strategy
 
-See also: SFESLDHPerf, SFEStopLossLogic, SFEDeltaHedgeGraph, SFEDeltaHedging, SFEStopLossThGraph,
+See also: SFESLDHPerf, SFEStopLossLogic, SFEDeltaHedgeGraph, SFEDeltaHedging, SFEStopLossThGraph, SFSstoploss, SFEDeltahedgingLogic, SFEDeltahedgingdepend
 
 Author: Simon Gstöhl, Florian Schulz
 
