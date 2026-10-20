@@ -23,9 +23,9 @@ Input:
 - gamma: decay of EMA
 
 Datafile: 
-- SFEVaRbank.csv : 'Time-series of the nominal prices of the DAX30, FTSE 100, and an
+- SFEVaRbank.csv : 'Time-series of the nominal prices of the DAX30, FTSE 100, and an assortment of stocks of other large companies.  Originally this file was named "2004-2014_dax_ftse". (daily periodicity from 05/04 - 05/14)'
 
-Example: Q-Q plots of the realized profits and losses over the
+Example: Q-Q plots of the realized profits and losses over the estimated Value-at-Risk for VaR RMA and VaR EMA and with fat tail distributions. (01/2007 - 01/2009)
 
 ```
 <div align="center">
