@@ -9,11 +9,11 @@ Name of Quantlet: SFEDeltaHedgeGraph
 
 Published in: Statistics of Financial Markets I
 
-Description: Generates and plots a graphical describtion of the logic behind delta hedging and
+Description: Generates and plots a graphical describtion of the logic behind delta hedging and calulates corresponding heding costs for given parameters
 
 Keywords: delta, hedging, asset, black-scholes, call, simulation, cost, delta, strategy
 
-See also: SFESLDHPerf, SFESLDHConv, SFEStopLossLogic, SFEDeltaHedgeGraph, SFEStopLossThGraph,
+See also: SFESLDHPerf, SFESLDHConv, SFEStopLossLogic, SFEDeltaHedgeGraph, SFEStopLossThGraph, SFSstoploss, SFEDeltaHedging, SFEDeltahedgingLogic, SFEDeltahedgingdepend
 
 Author: Simon Gstöhl, Florian Schulz
 
