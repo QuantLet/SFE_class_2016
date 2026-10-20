@@ -9,7 +9,7 @@ Name of Quantlet: SFEMCAsian
 
 Published in: Statistics of Financial Markets I
 
-Description: Calculates the prices and 95% Confidence Intervalls of Asian options
+Description: Calculates the prices and 95% Confidence Intervalls of Asian options using Monte Carlo Simulation.
 
 Keywords: exotic-option, option-price, monte-carlo, simulation, option, call, put
 
