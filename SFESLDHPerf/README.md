@@ -11,9 +11,9 @@ Published in: Statistics of Financial Markets I
 
 Description: Calculates performance of stop-loss and delta hedging for different observation frequancies
 
-Keywords: stop-loss, delta, hedging, asset, performance, black-scholes, call, simulation, cost,
+Keywords: stop-loss, delta, hedging, asset, performance, black-scholes, call, simulation, cost, delta, strategy
 
-See also: SFESLDHConv, SFEStopLossLogic, SFEDeltaHedgeGraph, SFEStopLossThGraph, SFSstoploss,
+See also: SFESLDHConv, SFEStopLossLogic, SFEDeltaHedgeGraph, SFEStopLossThGraph, SFSstoploss, SFEDeltaHedging, SFEDeltahedgingLogic, SFEDeltahedgingdepend
 
 Author: Simon Gstöhl, Florian Schulz
 
